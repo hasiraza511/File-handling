@@ -1,0 +1,28 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+int main()
+{
+ofstream write;
+write.open("D:/pf/file handling/output.txt",ios::app);
+write<<endl;
+write<<"========================================================"<<endl;
+write<<"Output: ";
+write<<endl;
+char arr[5]={'a','b','c','d','e'};
+for(int i=0;i<5;i++)
+{
+    
+    cout<<arr[i];
+    write<<arr[i];
+    for(int j=0;j<5;j++)
+    {
+        cout<<arr[j];
+        write<<arr[j];
+    }
+   cout<<endl;
+   write<<endl;
+}
+write<<"========================================================"<<endl;
+write.close();
+}

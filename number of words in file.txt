@@ -1,0 +1,30 @@
+#include<iostream>
+#include<fstream>
+#include<sstream>
+using namespace std;
+int main()
+{
+  int count=0;
+  string name;
+  ifstream input;
+  string word;
+  input.open("D:/coding/.vscode/file handling/1st.txt",ios::in);
+  if(input.is_open())
+  {
+    while(getline(input,name))
+    {
+        stringstream ss(name);
+        while(ss>>word)
+        {
+            count++;
+        }
+    }
+     cout<<"File open successfully" <<endl;
+    cout<<"The number of words is: "<<count<<endl;
+   
+  }
+  else
+  cout<<"File error occur";
+    }
+    
+

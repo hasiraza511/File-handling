@@ -1,0 +1,24 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    string name;
+   ifstream read;
+   read.open("D:/coding/.vscode/file handling/1st.txt",ios::in);
+   ofstream write;
+   write .open("D:/pf/file handling/copy.txt");
+   if(read.is_open())
+   {
+   while(getline(read,name))
+   {
+    write<<name<<endl;
+   }
+   
+   write.close();
+   read.close();
+   cout<<"File is copied successfully.";}
+   else{
+    cout<<" File error";
+   }
+}

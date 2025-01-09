@@ -1,0 +1,68 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+void write(string& filename,int& age,string& email,string& pass )
+{
+    string namefile;
+    namefile="D:/pf/new file handling/"+filename+".txt";
+   ofstream write;
+   write.open(namefile);
+  
+   write<<"Name: "<<filename<<endl;
+   write<<"Age: "<<age<<endl;
+   write<<"Email: "<<email<<endl;
+   write<<"Username: "<<filename<<"_user"<<endl;
+   write<<"Password: "<<pass<<endl;
+   cout<<"Successfully save!"<<endl;
+    
+}
+void read(string username,string password, string filename)
+{
+    string username1="";
+    string password1="";
+    ifstream input("D:/pf/new file handling/"+filename+".txt");
+getline(input,username1);
+getline(input,password1);
+getline(input,password1);
+getline(input,password1);
+getline(input,password1);
+if("Name: "+username==username1&&password1=="Password: "+password)
+{
+cout<<"Login succces"<<endl;
+}
+else
+cout<<"try with corrrect info"<<endl;
+}
+int main(){
+    string filename;
+    int age;
+    string email,pass;
+cout<<"Enter your name: ";
+cin>>filename;
+cout<<"Enter your age: ";
+cin>>age;
+cout<<"Enter your Email: ";
+cin>>email;
+cout<<"password: ";
+cin>>pass;
+write(filename,age,email,pass);
+ cout<<"Press Y to login and N to exist";
+ char ch;
+ cin>>ch;
+ if(ch=='Y'||ch=='y')
+ {
+ string username1,password;
+ cout<<"Enter username: ";
+ cin>>username1;
+ cout<<"Password: ";
+ cin>>password;
+ read(username1,password,filename);
+ 
+ }
+
+ 
+ 
+ 
+ 
+ 
+ }

@@ -1,0 +1,21 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+   ifstream read;
+   string name;
+   int line=0;
+   read.open("D:/pf/file handling/copy.txt",ios::in);
+   if(read.is_open())
+   {
+    while(getline(read,name))
+    {
+        line++;
+    }
+    cout<<"Number of lines in program is: "<<line;
+   }
+   else{
+   cout<<"File error occur";}
+   read.close();
+}
