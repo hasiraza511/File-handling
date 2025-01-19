@@ -1,0 +1,155 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+ class teacher{
+        // Access specifier
+  public:
+         string name;
+         string id;
+         string setpassword;
+         string department;
+         double salary;
+
+        void changedept(string dpt){
+           department=dpt;
+        }
+        void changepassword()
+        {
+            string passcode;
+            cout<<"Enter new password: ";
+            cin>>passcode;
+            setpassword=passcode;
+        }
+        // paramatric constuctor
+         teacher(string n,string i,string p,string d,double sal)
+        {
+          name=n;
+          id=i;
+          setpassword=p;
+          department=d;
+          salary=sal;
+        }
+        void getinfo(){
+            cout<<"Name of teacher: "<<name<<endl;
+            cout<<"Id of teacher: "<<id<<endl;
+            cout<<"Department of teacher: "<<department<<endl;
+            cout<<"Salary of teacher: "<<salary<<endl;
+        }
+        void writefile()
+        {
+            ofstream write;
+            string filename="D://opp//teacher details//"+id+".txt";
+            write.open(filename);
+            write<<"password: "<<setpassword;
+            write<<"Name of teacher: "<<name<<endl;
+            write<<"Id of teacher: "<<id<<endl;
+            write<<"Department of teacher: "<<department<<endl;
+            write<<"Salary of teacher: "<<salary<<endl;
+            write.close();
+        }
+
+    };
+    void readdeatial(string id,string pass)
+        {
+            ifstream read;
+            string filename="D://opp//teacher details//"+id+".txt";
+            read.open(filename);
+            string data;
+            string password1;
+            if(read.is_open())
+            {
+            getline(read,password1);
+            if("password: "+pass==password1)
+            {
+              while(!read.eof())
+               {
+                  getline(read,data);
+                cout<<data;
+                cout<<endl;
+               }
+
+            }
+            else
+            {
+                cout<<"\nIncorrect password..."<<endl;
+                char chh;
+                cout<<"Forget password Y or N........";
+                cin>>chh;
+                if(chh=='Y'||ch=='y')
+                {
+                    teacher temp("",id,"","",0);
+                   temp.changepassword();
+                   temp.writefile();
+
+                }
+            }
+            else
+            {
+               cout<<"File error...";
+            }
+            read.close();
+
+
+        }
+
+int main()
+{
+    string naam;
+    string idd;
+    string password;
+    string departmentt;
+    double slarayy;
+    int choice;
+    start:
+    cout<<"1.Add details of teacher."<<endl;
+    cout<<"2.Check details of teacher."<<endl;
+    cin>>choice;
+    cin.ignore();
+    if(choice==1)
+    {
+
+      cout<<"Enter name of teacher: ";
+       getline(cin,naam);
+      cout<<"Enter id of  teacher: ";
+       getline(cin,idd);
+      cout<<"Set strong password: ";
+      getline(cin,password);
+      cout<<"Enter department of teacher: ";
+      getline(cin,departmentt);
+      cout<<"Enter salary of teacher: ";
+     cin>>slarayy;
+     teacher obj(naam,idd,password,departmentt,slarayy);
+      obj.writefile();
+      cout<<endl;
+      char ch;
+      cout<<"Do to want to contionue Y and N: ";
+      cin>>ch;
+      if(ch=='y'||ch=='Y')
+      {
+          goto start;
+      }
+
+    }
+    else if(choice==2)
+    {
+        string password;
+        string iduser;
+        cout<<"Pleace enter your id: ";
+        getline(cin,iduser);
+        cout<<"<<Enter password: ";
+       getline(cin,password);
+        readdeatial(iduser,password);
+        char ch;
+        cout<<"Do to want to contionue Y and N: ";
+        cin>>ch;
+         if(ch=='y'||ch=='Y')
+         {
+          goto start;
+         }
+
+
+
+            }
+
+
+}
