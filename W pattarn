@@ -1,0 +1,29 @@
+ #include<iostream>
+using namespace std;
+    int main()
+{
+  //for run loop 5 times
+ for (int i = 0; i < 5; i++) {
+        
+        for (int j = 0; j < i; j++) {
+            cout << " ";
+        }        
+        cout << "*";
+        //for spacing
+        for (int j = 0; j < (5 - i - 1) * 2; j++) {
+            cout << " ";
+        }
+        cout << "*";
+
+        for (int j = 0; j < (i+i); j++) {
+            cout << " ";
+        }        
+        cout << "*";
+        for (int j = 0; j < (5 - i - 1) * 2; j++) {
+            cout << " ";
+        }
+        cout << "*"<<endl;
+         
+ 
+ }
+}
